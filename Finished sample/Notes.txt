@@ -1,0 +1,12 @@
+Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 3.1.0 initialized 'GalleryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+fail: ImageGallery.API.Program[0]
+      An error occurred while migrating or seeding the database.
+Microsoft.Data.SqlClient.SqlException (0x80131904): 
+
+
+Cannot open server 'simonellis1963' requested by the login. Client with IP address '82.22.68.8' is not allowed to access the server.  
+
+To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database 
+to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+   

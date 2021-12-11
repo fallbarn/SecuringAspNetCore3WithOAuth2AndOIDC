@@ -6,12 +6,17 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{210E34C0-B761-40E2-9CAB-4334F8D2A554}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB8C2CA6-915C-45A1-A4AA-BFA767B09F6C}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGallery.Client", "src\ImageGallery.Client\ImageGallery.Client.csproj", "{06D1048B-31A1-4FAA-BDDE-B098EBADAF85}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGallery.API", "src\ImageGallery.API\ImageGallery.API.csproj", "{7D9427C2-D6BB-4807-B28E-D51BA271FBD8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGallery.Model", "src\ImageGallery.Model\ImageGallery.Model.csproj", "{226B95C9-A9A6-4DF7-992C-A5945AF3AF0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marvin.IDP", "src\Marvin.IDP\Marvin.IDP.csproj", "{A6487733-B20E-4808-9A56-A85704F162AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +36,10 @@ Global
 		{226B95C9-A9A6-4DF7-992C-A5945AF3AF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226B95C9-A9A6-4DF7-992C-A5945AF3AF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226B95C9-A9A6-4DF7-992C-A5945AF3AF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6487733-B20E-4808-9A56-A85704F162AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6487733-B20E-4808-9A56-A85704F162AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6487733-B20E-4808-9A56-A85704F162AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6487733-B20E-4808-9A56-A85704F162AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

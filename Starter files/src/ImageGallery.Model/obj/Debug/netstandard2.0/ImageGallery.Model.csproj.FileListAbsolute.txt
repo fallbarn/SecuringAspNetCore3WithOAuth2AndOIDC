@@ -1,0 +1,9 @@
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\bin\Debug\netstandard2.0\ImageGallery.Model.deps.json
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\bin\Debug\netstandard2.0\ImageGallery.Model.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\bin\Debug\netstandard2.0\ImageGallery.Model.pdb
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\obj\Debug\netstandard2.0\ImageGallery.Model.csprojAssemblyReference.cache
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\obj\Debug\netstandard2.0\ImageGallery.Model.AssemblyInfoInputs.cache
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\obj\Debug\netstandard2.0\ImageGallery.Model.AssemblyInfo.cs
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\obj\Debug\netstandard2.0\ImageGallery.Model.csproj.CoreCompileInputs.cache
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\obj\Debug\netstandard2.0\ImageGallery.Model.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Model\obj\Debug\netstandard2.0\ImageGallery.Model.pdb
