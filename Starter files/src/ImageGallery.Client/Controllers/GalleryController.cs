@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ImageGallery.Client.Controllers
 { 
-    [Authorize]
+  //[Authorize]
     public class GalleryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

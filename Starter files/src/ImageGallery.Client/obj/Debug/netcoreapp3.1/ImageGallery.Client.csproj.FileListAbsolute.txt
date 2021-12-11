@@ -40,3 +40,10 @@ C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOID
 C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\obj\Debug\netcoreapp3.1\ImageGallery.Client.dll
 C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\obj\Debug\netcoreapp3.1\ImageGallery.Client.pdb
 C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\obj\Debug\netcoreapp3.1\ImageGallery.Client.genruntimeconfig.cache
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\fallb\OneDrive\Documents\PluralSite\SecuringAspNetCore3WithOAuth2AndOIDC\Starter files\src\ImageGallery.Client\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
