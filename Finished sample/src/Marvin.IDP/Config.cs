@@ -10,6 +10,8 @@ namespace Marvin.IDP
 {
     public static class Config
     {
+
+        // sle note: refers to the claims that are made available to the middleware.
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
             {
@@ -30,6 +32,8 @@ namespace Marvin.IDP
                     new List<string>() { "subscriptionlevel" })
             };
 
+
+        // sle note: refers Restful API that the Client Application uses, in this case the ImageGalleryAPI
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
@@ -42,27 +46,37 @@ namespace Marvin.IDP
                 }
             };
 
+
+        // sle note: Hardcoded to the Client application! In this case the 'ImageGallery' MVC controller website
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
+
                 new Client
                 {
-                    AccessTokenType = AccessTokenType.Reference,
+                    IdentityTokenLifetime = 130,
+                    AuthorizationCodeLifetime = 120,
                     AccessTokenLifetime = 120,
+                    AccessTokenType = AccessTokenType.Reference,                   
                     AllowOfflineAccess = true, 
                     UpdateAccessTokenClaimsOnRefresh = true,
                     ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
+
+                    // sle note: points the the middleware 'signin' api interface with the 'Client Application'
                     RedirectUris = new List<string>()
                     {
                         "https://localhost:44389/signin-oidc"
                     },
+                    // sle note: points the the middleware 'signout' api interface with the 'Client Application'
                     PostLogoutRedirectUris = new List<string>()
                     {
                         "https://localhost:44389/signout-callback-oidc"
                     },
+
+                    // sle note: The middleware expects the following scopes must be matched by
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
@@ -70,7 +84,7 @@ namespace Marvin.IDP
                         IdentityServerConstants.StandardScopes.Address,
                         "roles",
                         "imagegalleryapi",
-                        "country",
+                        "country",          
                         "subscriptionlevel"
                     },
                     ClientSecrets =

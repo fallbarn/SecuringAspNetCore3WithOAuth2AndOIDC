@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ImageGallery.API.Entities
 {
+
+    // sle note: EF step 1. define the EF Entities to be mapped into EF generated database tables ((connection string found in Startup.cs)
     public class Image
     {
         [Key]

@@ -25,6 +25,7 @@ namespace ImageGallery.Client.Controllers
 
         public GalleryController(IHttpClientFactory httpClientFactory)
         {
+            // Add Clients to built in factory class instance in the Startup configure services.
             _httpClientFactory = httpClientFactory ?? 
                 throw new ArgumentNullException(nameof(httpClientFactory));
         }
@@ -33,19 +34,25 @@ namespace ImageGallery.Client.Controllers
         {
             await WriteOutIdentityInformation();
 
+            // sle note: api 1. get APIClient, which is configured in Startup.cs in configure services, and delegate to bearer token handler
             var httpClient = _httpClientFactory.CreateClient("APIClient");
 
+            // sle note: api 2. setup the restful call: a GET to https://localhost:44366/api/images Maps to GetImages() in API via the Get verb
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
                 "/api/images/");
             
+            // sle note: api 3. make the call to the api
             var response = await httpClient.SendAsync(
                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
+                // sle note: get or serialize the json into a stream.
                 using (var responseStream = await response.Content.ReadAsStreamAsync())
                 {
+                    // sle note: api 4 then deserialize into a List<image>
+                    //    The url to the image is inserted into the http class : <img class="thumbnailImage" src="@("https://localhost:44366/images/" + item.FileName)" />
                     return View(new GalleryIndexViewModel(
                         await JsonSerializer.DeserializeAsync<List<Image>>(responseStream)));
                 }
@@ -240,6 +247,7 @@ namespace ImageGallery.Client.Controllers
         {
             var idpClient = _httpClientFactory.CreateClient("IDPClient");
 
+          
             var metaDataResponse = await idpClient.GetDiscoveryDocumentAsync();
 
             if (metaDataResponse.IsError)

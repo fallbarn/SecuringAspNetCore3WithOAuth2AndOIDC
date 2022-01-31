@@ -27,30 +27,43 @@ namespace Marvin.IDP
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var marvinIDPDataDBConnectionString = 
-                "Server=(localdb)\\mssqllocaldb;Database=MarvinIDPDataDB;Trusted_Connection=True;";
+           
 
             // uncomment, if you want to add an MVC-based UI
             services.AddControllersWithViews();
 
+            // sle note: configure middleware with Users. This IDP does not provide an interface to create  NEW users??
             var builder = services.AddIdentityServer()
                 //.AddInMemoryIdentityResources(Config.Ids)
                 //.AddInMemoryApiResources(Config.Apis)
                 //.AddInMemoryClients(Config.Clients)
                 .AddTestUsers(TestUsers.Users);
 
+            // sle note: switch to developer to test without certificates installed!!
             // not recommended for production - you need to store your key material somewhere secure
-            //builder.AddDeveloperSigningCredential();
-            builder.AddSigningCredential(LoadCertificateFromStore());
+            builder.AddDeveloperSigningCredential();
+            //builder.AddSigningCredential(LoadCertificateFromStore());
 
             var migrationsAssembly = typeof(Startup)
                 .GetTypeInfo().Assembly.GetName().Name;
 
+
+            // sle note: to initialise the EF database provided by the IdentityServer4.EntityFramework nuget package
+            //  In this directory: run manually powershell "add-migration -InitialServerIdentityServerConfigurationDBMigration -context ConfigurationDbContext
+            //     to create the database. Location: C:\Users\fallb\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB
+            var marvinIDPDataDBConnectionString =
+               "Server=(localdb)\\mssqllocaldb;Database=MarvinIDPDataDB;Trusted_Connection=True;";
+
             builder.AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = builder => 
-                    builder.UseSqlServer(marvinIDPDataDBConnectionString,
-                    options => options.MigrationsAssembly(migrationsAssembly));
+                options.ConfigureDbContext = (builder) => {
+                    builder.UseSqlServer(
+                        marvinIDPDataDBConnectionString, (options) => 
+                        { 
+                            options.MigrationsAssembly(migrationsAssembly); 
+                        }
+                    );
+                };
             });
 
             builder.AddOperationalStore(options =>
@@ -101,19 +114,29 @@ namespace Marvin.IDP
             }
         }
 
+
+        // sle note: to initialise the EF database provided by the IdentityServer4.EntityFramework nuget package
         private void InitializeDatabase(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices
                 .GetService<IServiceScopeFactory>().CreateScope())
             {
+                // sle note: In the following lines there appears to be two dbContexts sharinng the same database: GRANT AND CONFIGURATION.
+
+                // sle note: Create the GRANT database if not already created. 
                 serviceScope.ServiceProvider
                     .GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
                 var context = serviceScope.ServiceProvider
-                    .GetRequiredService<ConfigurationDbContext>();
+                    .GetRequiredService<ConfigurationDbContext>(); // sle note: ConfigurationDbContext is in the Indentity4Service nuget package
+
+                // sle note: Create the CONFIGURATION database if not already created.
                 context.Database.Migrate();
+
+
                 if (!context.Clients.Any())
                 {
+                    // sle note: replaces the commented-out code  '//.AddInMemoryIdentityResources(Config.Ids)'
                     foreach (var client in Config.Clients)
                     {
                         context.Clients.Add(client.ToEntity());
@@ -123,6 +146,7 @@ namespace Marvin.IDP
 
                 if (!context.IdentityResources.Any())
                 {
+                    // sle note: replaces the commented-out code
                     foreach (var resource in Config.Ids)
                     {
                         context.IdentityResources.Add(resource.ToEntity());
@@ -132,6 +156,7 @@ namespace Marvin.IDP
 
                 if (!context.ApiResources.Any())
                 {
+                    // sle note: replaces the commented-out code
                     foreach (var resource in Config.Apis)
                     {
                         context.ApiResources.Add(resource.ToEntity());

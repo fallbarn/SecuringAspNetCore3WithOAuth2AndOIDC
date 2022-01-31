@@ -51,12 +51,13 @@ namespace ImageGallery.API
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = "https://localhost:44318";
+                    // sle note: authority points to the IDP i.e to verify the bearer token. Done by back channel protocol
+                    options.Authority = "https://localhost:44318"; 
                     options.ApiName = "imagegalleryapi";
                     options.ApiSecret = "apisecret";
                 });
 
-            // register the DbContext on the container, getting the connection string from
+            // sle note: EF step 4. EF register the DbContext on the container with dependency injection, getting the connection string from
             // appSettings (note: use this during development; in a production environment,
             // it's better to store the connection string in an environment variable)
             services.AddDbContext<GalleryContext>(options =>
@@ -65,7 +66,7 @@ namespace ImageGallery.API
                     Configuration["ConnectionStrings:ImageGalleryDBConnectionString"]);
             });
 
-            // register the repository
+            // sle note: EF step 5. Register the repository with dependency injection
             services.AddScoped<IGalleryRepository, GalleryRepository>();
 
             // register AutoMapper-related services
@@ -73,7 +74,7 @@ namespace ImageGallery.API
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method is called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -11,6 +11,10 @@ using System.Linq;
 
 namespace ImageGallery.API.Controllers
 {
+
+
+    // sle note: an (encripted) bearer token is expected by this interface ( equivalent of paying by cash?). However, what it can do (buy) is specified in the claims encoded within!
+    // This token is provided by the IDP, once the User has been authorised.
     [Route("api/images")]
     [ApiController]
     [Authorize]

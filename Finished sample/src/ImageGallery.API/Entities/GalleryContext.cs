@@ -3,6 +3,8 @@ using System;
 
 namespace ImageGallery.API.Entities
 {
+
+    // sle note: EF step 2. GalleryContext. Create the EF code first context with initial data when creating a new database
     public class GalleryContext : DbContext
     {
         public GalleryContext(DbContextOptions<GalleryContext> options)
@@ -10,7 +12,7 @@ namespace ImageGallery.API.Entities
         {
         }
 
-        public DbSet<Image> Images { get; set; }
+        public DbSet<Image> Images { get; set; } // sle note: one and only entity (table)
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

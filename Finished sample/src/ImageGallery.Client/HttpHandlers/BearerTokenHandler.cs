@@ -32,16 +32,20 @@ namespace ImageGallery.Client.HttpHandlers
             HttpRequestMessage request, 
             CancellationToken cancellationToken)
         {
+            // sle note: from IPD, get an access token, or refresh if necessary,
             var accessToken = await GetAccessTokenAsync();
-
+            
             if (!string.IsNullOrWhiteSpace(accessToken))
             {
                 request.SetBearerToken(accessToken);
             }
 
+            // sle note: Make call to API with token
             return await base.SendAsync(request, cancellationToken);
         }
 
+
+        // sle note: call IPD to get bearer token
         public async Task<string> GetAccessTokenAsync()
         {
             // get the expires_at value & parse it

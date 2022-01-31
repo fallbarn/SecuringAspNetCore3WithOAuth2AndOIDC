@@ -21,9 +21,13 @@ namespace Marvin.IDP
 
                  Claims = new List<Claim>
                  {
+
+                     // sle note: configure claims for basic profile info. Also note: The 'ClientApplication's middleware must be configured to request the scopes these provide.
                      new Claim("given_name", "Frank"),
                      new Claim("family_name", "Underwood"),
                      new Claim("address", "Main Road 1"),
+
+                     // sle note: must configure the claims for roles and policy based authorisation.
                      new Claim("role", "FreeUser"),
                      new Claim("subscriptionlevel", "FreeUser"),
                      new Claim("country", "nl")

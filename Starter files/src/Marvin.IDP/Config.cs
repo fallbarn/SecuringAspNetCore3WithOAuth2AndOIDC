@@ -21,6 +21,8 @@ namespace Marvin.IDP
             new ApiScope[]
             { };
 
+
+        // sle note: Configure a client. It must know about the client, thus is hard coded.
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
@@ -28,10 +30,11 @@ namespace Marvin.IDP
                 {
                     ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
+                    RequirePkce = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris = new List<string>()
                     {
-                        "https://localhost:44389/signin-oidc"
+                        "https://localhost:44389/signin-oidc" // maps back to the Image Gallery MVP app.
                     },
 
                     AllowedScopes =

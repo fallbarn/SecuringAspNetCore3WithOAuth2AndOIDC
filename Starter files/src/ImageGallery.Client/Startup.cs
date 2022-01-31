@@ -33,6 +33,8 @@ namespace ImageGallery.Client
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
             });
 
+            // sle note: should image that this works with the [Authorisation] attribute (I can see this being passed into the constructor!!!)
+            // sle note: here we configure what Kevin Dockx calls the middleware OpenID, using Microsoft.AspNetCore.Authentication.OpenIdConnect
             services.AddAuthentication(options =>
                {
                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -41,10 +43,10 @@ namespace ImageGallery.Client
                .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,options =>
                {
                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                   options.Authority = "https://localhost:44318/";
+                   options.Authority = "https://localhost:5001/"; // sle note: point to  Marvin.IDP
                    options.ClientId = "imagegalleryclient";
                    options.ResponseType = "code";
-                   options.UsePkce = false;                  
+                   options.UsePkce = true;                  
                    options.Scope.Add("openid");
                    options.Scope.Add("profile");
                    options.SaveTokens = true;

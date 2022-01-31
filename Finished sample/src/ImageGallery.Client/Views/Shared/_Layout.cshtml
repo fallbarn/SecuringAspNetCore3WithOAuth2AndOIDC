@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Authorization
-@inject IAuthorizationService AuthorizationService
+
+@*sle note: allows the use of the authorisation middleware already setup in the startup file*@
+@inject IAuthorizationService AuthorizationService 
     
 <!DOCTYPE html>
 <html>
@@ -34,14 +36,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Gallery" asp-action="Index">Home</a></li>
+
+                    @*sle note: must be in payinguser to see addimage button*@
                     @if (User.IsInRole("PayingUser"))
                     {
                         <li><a asp-area="" asp-controller="Gallery" asp-action="AddImage">Add an image</a></li>
                     }
+                    @*sle note: only show the canorderframe button is the policies permit*@
                     @if ((await AuthorizationService.AuthorizeAsync(User, "CanOrderFrame")).Succeeded)
                     { 
                         <li><a asp-area="" asp-controller="Gallery" asp-action="OrderFrame">Order frame</a></li>
                     }
+                    @*only show if already logged in.*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a asp-area="" asp-controller="Gallery" asp-action="Logout">Logout</a></li>

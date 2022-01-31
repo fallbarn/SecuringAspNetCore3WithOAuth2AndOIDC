@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ImageGallery.Client.Controllers
 { 
-  //[Authorize]
+    [Authorize]
     public class GalleryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -186,6 +186,9 @@ namespace ImageGallery.Client.Controllers
             // get the saved identity token
             var identityToken = await HttpContext
                 .GetTokenAsync(OpenIdConnectParameterNames.IdToken);
+
+            // sle note: This token is obtained from the IDP and saved in a cookie. Thus every subsequent time you access the imageGallery website it has the identitytoken. 
+            // Must clear the cookies to force it to go to the IDP to refresh.
 
             // write it out
             Debug.WriteLine($"Identity token: {identityToken}");

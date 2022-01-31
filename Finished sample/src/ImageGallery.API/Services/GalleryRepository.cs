@@ -5,10 +5,13 @@ using System.Linq;
 
 namespace ImageGallery.API.Services
 {
+
+    // sle note: EF step 3. The Repository class that uses the EF context, and can be substituted with a FAKE for testing.
     public class GalleryRepository : IGalleryRepository, IDisposable
     {
         private GalleryContext _context;
 
+        // sle note: context provided by dependency injection.
         public GalleryRepository(GalleryContext galleryContext)
         {
             _context = galleryContext ?? 

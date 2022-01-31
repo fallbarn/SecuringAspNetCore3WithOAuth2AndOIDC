@@ -19,6 +19,7 @@ namespace ImageGallery.API
             {
                 try
                 {
+                    // sle note: step 5. Create the EF database, given the connection string.
                     var context = scope.ServiceProvider.GetService<GalleryContext>();                   
                     // migrate & seed
                     context.Database.Migrate();
